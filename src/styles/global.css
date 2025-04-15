@@ -2,8 +2,9 @@
   --background: #1B1B1B;
   --accent: #19DB81;
   --accent-30: #19db804d;
+  --accent-10: #18dc811e;
   --background-dark: #040404;
-  --placeholder-color: #B4B4B4;
+  --placeholder-color: #D7D7D7;
   --border-color: #3C3C3C;
 }
 
@@ -46,7 +47,7 @@ h3 {
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .no-select {
@@ -73,4 +74,18 @@ img {
   width: 100%;
   height: 100%;
   display: flex;
+}
+
+input {
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: var(--placeholder-color);
 }
