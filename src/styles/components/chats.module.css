@@ -1,0 +1,30 @@
+.container {
+    width: 300px;
+    height: 100%;
+    background: var(--background);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    align-items: center;
+    padding: 8px
+}
+
+.header button {
+    height: 45px;
+    width: 70px;
+    background: none;
+    border: 2px solid var(--accent);
+    fill: var(--accent);
+}
+
+.header button:hover {
+    background-color: var(--accent-30);
+    fill: white;
+}
+
+.header button svg {
+    fill: inherit;
+}
