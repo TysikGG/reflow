@@ -5,11 +5,11 @@ import Options from "@/favicons/svg/Options.svg";
 
 export default function Panel() {
     return (
-        <div className={styles.container}>
+        <header className={styles.container}>
             <section>
                 <Chat />
                 <Options />
             </section>
-        </div>
+        </header>
     );
 }
