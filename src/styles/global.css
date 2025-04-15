@@ -6,6 +6,10 @@
   --background-dark: #040404;
   --placeholder-color: #D7D7D7;
   --border-color: #3C3C3C;
+
+  --chat-padding: 20px;
+  --line-height: 1.5;
+  --letter-spacing: 0.5px;
 }
 
 html,
@@ -16,6 +20,8 @@ body {
   height: 100dvh;
   width: 100dvw;
   overflow: overlay !important;
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
 }
 
 a {
@@ -32,6 +38,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   font-weight: bold;
   color: white;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 h1 {
@@ -88,4 +96,41 @@ input {
 
 input::placeholder {
   color: var(--placeholder-color);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+textarea {
+  background-color: transparent;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-weight: 600;
+  color: white;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+textarea:focus {
+  outline: none;
 }
