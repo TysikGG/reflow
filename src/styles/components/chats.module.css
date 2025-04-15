@@ -2,6 +2,10 @@
     width: 300px;
     height: 100%;
     background: var(--background);
+    padding: 0 10px 0 10px;
+    overflow-y: auto;
+    border-right: 1px;
+    border-color: var(--border-color);
 }
 
 .header {
@@ -18,6 +22,7 @@
     background: none;
     border: 2px solid var(--accent);
     fill: var(--accent);
+    margin-left: 20px;
 }
 
 .header button:hover {
@@ -27,4 +32,77 @@
 
 .header button svg {
     fill: inherit;
+}
+
+.search {
+    height: 50px;
+    width: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    margin-left: 10px;
+    height: 100%;
+    width: calc(100% - 40px);
+    z-index: 1;
+}
+
+.chatsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat {
+    border-radius: 12px;
+    margin-top: 10px;
+    border: 2px solid var(--accent);
+    padding: 10px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background: var(--accent-10);
+    transition: 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.chat:hover {
+    background: var(--accent-30);
+}
+
+.chatInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%; 
+}
+
+.chatInfoTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat h4 {
+    color: var(--placeholder-color)
+}
+
+.chatAvatarContainer {
+    margin: 2px;
+    height: 42px;
+    width: 42px;
+    margin-right: 10px;
+}
+
+.chatAvatar {
+    width: 42px;
+    height: 42px;
+    background-color: #000000;
+    border-radius: 30px;
+    border: 2px solid var(--accent);
 }

@@ -1,6 +1,7 @@
 import styles from "@/styles/components/chats.module.css";
 
 import Plus from "@/favicons/svg/Plus.svg";
+import Search from "@/favicons/svg/Search.svg";
 
 export default function Chats() {
     interface ChatProps {
@@ -12,13 +13,15 @@ export default function Chats() {
     function Chat({ username, lastMessage, timestamp } : ChatProps) {
         return (
             <div className={styles.chat}>
-                <span />
+                <div className={styles.chatAvatarContainer}>
+                    <div className={styles.chatAvatar} />
+                </div>
                 <div className={styles.chatInfo}>
                     <div className={styles.chatInfoTitle}>
-                        <h2>{username}</h2>
+                        <h3>{username}</h3>
                         <h4>{timestamp}</h4>
                     </div>
-                    <h3>{lastMessage}</h3>
+                    <h4>{lastMessage}</h4>
                 </div>
             </div>
         )
@@ -29,7 +32,11 @@ export default function Chats() {
 
         // Тестовый цикл
         for (let i = 0; i < 10; i++) {
-            cards.push(<Chat username="Никнейм" timestamp="15:32" lastMessage="Привет как дела" />);
+            cards.push(<Chat 
+                username="Никнейм"
+                timestamp="15:32"
+                lastMessage="Привет как дела"
+            />);
         }
 
         return cards;
@@ -42,7 +49,8 @@ export default function Chats() {
                 <button><Plus /></button>
             </div>
             <div className={styles.search}>
-                <input type="text" />
+                <Search />
+                <input placeholder="Поиск"/>
             </div>
             <div className={styles.chatsContainer}>
                 <ChatCards />
