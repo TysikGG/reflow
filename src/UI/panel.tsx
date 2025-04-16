@@ -7,8 +7,8 @@ export default function Panel() {
     return (
         <header className={styles.container}>
             <section>
-                <Chat />
-                <Options />
+                <Chat tabindex="0"/>
+                <Options tabindex="0"/>
             </section>
         </header>
     );
