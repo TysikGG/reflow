@@ -1,0 +1,58 @@
+.container {
+    width: 100%;
+    height: a;
+    background-color: var(--background-dark);
+    padding: 0 var(--chat-padding) 10px var(--chat-padding);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: height 0.2s ease;
+}
+
+.field {
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+    background: var(--background);
+    width: 100%;
+    min-height: 65px;
+    max-height: 200px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: height 0.2s ease;
+    overflow: hidden;
+}
+
+.filesInputContainer input {
+    display: none;
+}
+
+.filesInputContainer {
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 14px;
+    fill: var(--accent);
+    transition: 0.3s;
+}
+
+.filesInputContainer svg {
+    fill: inherit;
+}
+
+.filesInputContainer:hover {
+    fill: white;
+    background-color: var(--accent-30);
+}
+
+.field textarea {
+    width: 100%;
+    overflow: auto;
+    height: 41px;
+    padding: 10px 0 10px 0;
+}
