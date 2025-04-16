@@ -1,4 +1,5 @@
 import Chats from "@/UI/chats";
+import Main from "@/UI/main";
 import Panel from "@/UI/panel";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <div className="home">
       <Panel />
       <Chats />
+      <Main />
     </div>
   );
 }
