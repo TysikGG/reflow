@@ -1,11 +1,13 @@
 .container {
-    width: 300px;
+    min-width: 300px;
     height: 100%;
     background: var(--background);
     padding: 0 10px 0 10px;
     overflow-y: auto;
+    border: 0px;
     border-right: 1px;
     border-color: var(--border-color);
+    border-style: solid;
 }
 
 .header {
@@ -42,6 +44,7 @@
     padding: 10px;
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 
 .search input {
@@ -68,6 +71,7 @@
     transition: 0.3s;
     cursor: pointer;
     overflow: hidden;
+    line-height: 1.5;
 }
 
 .chat:hover {
