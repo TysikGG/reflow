@@ -1,0 +1,12 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background: var(--background-dark);
+    display: flex;
+    background-image: 
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: 12px 12px;
+    background-position: -1px -1px;
+}
+
