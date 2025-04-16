@@ -7,6 +7,8 @@
   --placeholder-color: #D7D7D7;
   --border-color: #3C3C3C;
 
+  --grid-color: #e0e0e007;
+
   --chat-padding: 20px;
   --line-height: 1.5;
   --letter-spacing: 0.5px;
@@ -133,4 +135,14 @@ textarea {
 
 textarea:focus {
   outline: none;
+}
+
+::-moz-selection {
+  color: var(--accent);
+  background: transparent;
+}
+
+::selection {
+  color: var(--accent);
+  background: transparent;
 }
