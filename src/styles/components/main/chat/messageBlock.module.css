@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    padding: 5px var(--chat-padding) 5px var(--chat-padding);
+}
+
+.avatarContainer {
+    height: 100%;
+    width: 42px;
+    padding-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    background-color: #A9A9A9;
+    border-radius: 12px;
+}
+
+.message {
+    padding: 10px;
+    margin: 0 10px 0 10px;
+    border-radius: 12px;
+    width: fit-content;
+    height: fit-content;
+    max-width: 50%;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.right {
+    flex-direction: row-reverse;
+}
+
+.left {
+    flex-direction: row;
+}
+
+.defaultMessageTheme {
+    background-color: var(--accent);
+}
+
+.lightMessageTheme {
+    border: 2px solid var(--accent);
+    background: var(--accent-30);
+}
