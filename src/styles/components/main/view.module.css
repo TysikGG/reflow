@@ -8,5 +8,8 @@
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     background-size: 12px 12px;
     background-position: -1px -1px;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0 10px 0;
 }
-
