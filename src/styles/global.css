@@ -35,7 +35,12 @@ a {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -73,6 +78,9 @@ button {
   cursor: pointer;
   border-radius: 12px;
   transition: 0.25s;
+  font-family: inherit;
+  font-weight: bold;
+  color: white;
 }
 
 img {
@@ -94,6 +102,7 @@ input {
   outline: none;
   background: none;
   font-size: 16px;
+  padding: 10px;
 }
 
 input::placeholder {
@@ -110,7 +119,8 @@ input::placeholder {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);;
+  background: var(--border-color);
+  ;
   border-radius: 4px;
 }
 
