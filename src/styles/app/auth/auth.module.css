@@ -1,0 +1,114 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background: var(--background-dark);
+    display: flex;
+    background-image:
+        linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: 12px 12px;
+    background-position: -1px -1px;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0 10px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+}
+
+.loginContainer svg {
+    margin-bottom: 100px;
+}
+
+.loginForm {
+    border-radius: 12px;
+    background-color: var(--background);
+    width: 100%;
+    aspect-ratio: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.loginForm h1 {
+    color: white;
+}
+
+.inputsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.inputsContainer input {
+    background-color: var(--accent-30);
+    border-radius: 12px;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    border: 2px solid var(--accent);
+}
+
+.loginForm button {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+}
+
+.loginForm button svg {
+    stroke-width: 2.5px;
+    margin: 0;
+    display: flex;
+}
+
+.loginForm h3 {
+    color: white;
+}
+
+.buttonSecondary {
+    background-color: transparent !important;
+    max-height: 50px;
+    position: relative;
+    border: 2px solid var(--accent);
+}
+
+.buttonSecondary:hover {
+    background-color: var(--accent-30) !important;
+}
+
+.buttonSecondary svg {
+    position: absolute;
+    left: 10px;
+}
+
+.loginTitleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginTitleContainer h3 {
+    color: var(--placeholder-color);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.loginTitleContainer h3:hover {
+    color: var(--accent)
+}
