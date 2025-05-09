@@ -3,15 +3,19 @@
   --accent: #19DB81;
   --accent-30: #19db804d;
   --accent-10: #18dc811e;
+
+  --accent-error: #db1919;
+  --accent-error-30: #db19194d;
+
   --background-dark: #040404;
   --placeholder-color: #D7D7D7;
   --border-color: #3C3C3C;
-
   --grid-color: #e0e0e007;
 
   --chat-padding: 20px;
   --line-height: 1.5;
   --letter-spacing: 0.5px;
+
 }
 
 html,

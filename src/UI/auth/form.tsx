@@ -1,8 +1,11 @@
 'use client';
-import styles from "@/styles/app/auth/auth.module.css";
 
+import { FormEventHandler, MouseEventHandler, ReactNode, useState } from "react";
+
+import styles from "@/styles/app/auth/auth.module.css";
 import Key from "@/favicons/svg/Key.svg";
-import { MouseEventHandler, ReactNode, useState } from "react";
+import loginCallback from "@/libs/components/auth/loginCallback";
+import registerCallback from "@/libs/components/auth/registerCallback";
 
 interface BaseAuthFormProps {
     title: string,
@@ -12,18 +15,19 @@ interface BaseAuthFormProps {
     secondary?: boolean,
     secondaryTitle?: string,
     secondaryButtonTitle?: ReactNode,
-    tipCallback: MouseEventHandler,
+    submitCallback?: FormEventHandler,
+    tipCallback?: MouseEventHandler,
     secondaryCallback?: MouseEventHandler
 }
 
 export default function AuthForm() {
     const [formType, setFormType] = useState<String>("login");
 
-    function BaseAuthForm({ title, tip, inputs, buttonTitle, secondary, secondaryTitle, secondaryButtonTitle, tipCallback, secondaryCallback }: BaseAuthFormProps) {
+    function BaseAuthForm({ title, tip, inputs, buttonTitle, secondary, secondaryTitle, secondaryButtonTitle, submitCallback, tipCallback, secondaryCallback }: BaseAuthFormProps) {
         return (
             <div className={styles.container}>
                 <section className={styles.loginContainer}>
-                    <form className={styles.loginForm}>
+                    <form className={styles.loginForm} onSubmit={submitCallback}>
                         <div className={styles.loginTitleContainer}>
                             <h1>{title}</h1>
                             <h3 onClick={tipCallback}>{tip}</h3>
@@ -62,12 +66,26 @@ export default function AuthForm() {
                 inputs={
                     <AuthFormInputsConstructor
                         children={[
-                            <input name="username" placeholder="Логин" />,
-                            <input name="password" type="password" placeholder="Пароль" />
+                            <input
+                                key="1"
+                                name="usernameOrEmail"
+                                minLength={4}
+                                required={true}
+                                placeholder="Логин"
+                            />,
+                            <input
+                                key="2"
+                                name="password"
+                                type="password"
+                                minLength={6}
+                                required={true}
+                                placeholder="Пароль"
+                            />
                         ]}
                     />
                 }
                 buttonTitle="Войти"
+                submitCallback={loginCallback}
                 tipCallback={() => setFormType("register")}
                 secondary={true}
                 secondaryTitle="ИЛИ"
@@ -82,13 +100,34 @@ export default function AuthForm() {
                 inputs={
                     <AuthFormInputsConstructor
                         children={[
-                            <input name="username" placeholder="Придумайте логин" />,
-                            <input name="email" type="email" placeholder="Ваш email" />,
-                            <input name="password" type="password" placeholder="Придумайте пароль" />
+                            <input
+                                key="1"
+                                name="username"
+                                minLength={4}
+                                required={true}
+                                placeholder="Придумайте логин"
+                            />,
+                            <input
+                                key="2"
+                                name="email"
+                                type="email"
+                                minLength={6}
+                                required={true}
+                                placeholder="Ваш email"
+                            />,
+                            <input
+                                key="3"
+                                name="password"
+                                type="password"
+                                minLength={6}
+                                required={true}
+                                placeholder="Придумайте пароль"
+                            />
                         ]}
                     />
                 }
                 buttonTitle="Регистрация"
+                submitCallback={registerCallback}
                 tipCallback={() => setFormType("login")}
             />
         )
