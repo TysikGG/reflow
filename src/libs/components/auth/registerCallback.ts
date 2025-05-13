@@ -10,14 +10,14 @@ export default function registerCallback(e: FormEvent<HTMLFormElement>) {
     const formData = new FormData(e.currentTarget);
 
     const username = formData.get("username")?.toString();
-    const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
 
-    if (!username || !password || !email) return showErrorMessage("Введите хотя-бы один символ!");
+    if (!username || !password) return showErrorMessage("Введите хотя-бы один символ!");
 
-    const login = new APIUsersRegister({
-        email,
+    const APIregister = new APIUsersRegister({
         username,
         hashed_password: hash(password)
-    })
+    });
+
+    APIregister.register();
 }

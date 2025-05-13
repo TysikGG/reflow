@@ -68,8 +68,9 @@ export default function AuthForm() {
                         children={[
                             <input
                                 key="1"
-                                name="usernameOrEmail"
+                                name="username"
                                 minLength={4}
+                                maxLength={300}
                                 required={true}
                                 placeholder="Логин"
                             />,
@@ -104,16 +105,9 @@ export default function AuthForm() {
                                 key="1"
                                 name="username"
                                 minLength={4}
+                                maxLength={16}
                                 required={true}
                                 placeholder="Придумайте логин"
-                            />,
-                            <input
-                                key="2"
-                                name="email"
-                                type="email"
-                                minLength={6}
-                                required={true}
-                                placeholder="Ваш email"
                             />,
                             <input
                                 key="3"

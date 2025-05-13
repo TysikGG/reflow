@@ -9,13 +9,13 @@ export default function loginCallback(e: FormEvent<HTMLFormElement>) {
 
     const formData = new FormData(e.currentTarget);
 
-    const usernameOrEmail = formData.get("usernameOrEmail")?.toString();
+    const username = formData.get("username")?.toString();
     const password = formData.get("password")?.toString();
 
-    if (!usernameOrEmail || !password) return showErrorMessage("Введите хотя-бы один символ!");
+    if (!username || !password) return showErrorMessage("Введите хотя-бы один символ!");
 
     const APIlogin = new APIUsersLogin({
-        usernameOrEmail,
+        username,
         hashed_password: hash(password)
     })
 
