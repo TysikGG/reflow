@@ -18,7 +18,7 @@ export class APIUsersRegister implements APIUsersRegisterProps {
         await request("/users/auth/register", {data: {
             username: this.username,
             hashed_password: this.hashed_password
-        }})
+        }, method: "post"})
     }
 }
 
