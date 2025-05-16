@@ -112,3 +112,12 @@
 .loginTitleContainer h3:hover {
     color: var(--accent)
 }
+
+.checkUsernameTitle {
+    width: 100%;
+    padding-left: 3px;
+}
+
+.checkUsernameTitle h6 {
+    margin-bottom: 3px;
+}

@@ -151,12 +151,15 @@ textarea:focus {
   outline: none;
 }
 
-::-moz-selection {
+::selection {
   color: var(--accent);
   background: transparent;
 }
 
-::selection {
-  color: var(--accent);
-  background: transparent;
+.error-selection::selection {
+  color: var(--accent-error);
+}
+
+[disabled] {
+  cursor: not-allowed;
 }
