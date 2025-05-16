@@ -6,24 +6,39 @@ import styles from "@/styles/app/auth/auth.module.css";
 import Key from "@/favicons/svg/Key.svg";
 import loginCallback from "@/libs/components/auth/loginCallback";
 import registerCallback from "@/libs/components/auth/registerCallback";
+import debounce from "@/libs/scripts/debounce";
+import checkUsername from "@/libs/API/users/CheckUsername";
 
 interface BaseAuthFormProps {
     title: string,
     tip: string,
     inputs: ReactNode,
     buttonTitle: string,
+    buttonDisabled?: boolean,
     secondary?: boolean,
     secondaryTitle?: string,
     secondaryButtonTitle?: ReactNode,
     submitCallback?: FormEventHandler,
     tipCallback?: MouseEventHandler,
     secondaryCallback?: MouseEventHandler
-}
+};
 
 export default function AuthForm() {
     const [formType, setFormType] = useState<String>("login");
 
-    function BaseAuthForm({ title, tip, inputs, buttonTitle, secondary, secondaryTitle, secondaryButtonTitle, submitCallback, tipCallback, secondaryCallback }: BaseAuthFormProps) {
+    function BaseAuthForm({
+        title,
+        tip,
+        inputs,
+        buttonTitle,
+        buttonDisabled = false,
+        secondary,
+        secondaryTitle,
+        secondaryButtonTitle,
+        submitCallback,
+        tipCallback,
+        secondaryCallback
+    }: BaseAuthFormProps) {
         return (
             <div className={styles.container}>
                 <section className={styles.loginContainer}>
@@ -43,7 +58,7 @@ export default function AuthForm() {
                         >
                             {secondaryButtonTitle}
                         </button>
-                        <button>{buttonTitle}</button>
+                        <button disabled={buttonDisabled}>{buttonTitle}</button>
                     </form>
                 </section>
             </div>
@@ -55,6 +70,87 @@ export default function AuthForm() {
             <div className={styles.inputsContainer}>
                 {...children.children}
             </div>
+        )
+    }
+
+    function RegisterForm() {
+        const [usernameCheckState, setUsernameCheckState] = useState("hidden");
+
+        function checkUsernameCallback() {
+            const value = (document.getElementById("register-username-input") as HTMLInputElement)?.value;
+            if (!value) return;
+
+            checkUsername(value).then((res) => {
+                console.log(res.data);
+                if (res.data.available === false) setUsernameCheckState("not_available")
+                else if (res.data.available === true) setUsernameCheckState("available");
+            })
+        }
+
+        let usernameDebounce = debounce(checkUsernameCallback, 1500);
+
+        return (
+            <BaseAuthForm
+                title="Регистрация"
+                tip="У меня уже есть аккаунт"
+                inputs={
+                    <AuthFormInputsConstructor
+                        children={[
+                            <>
+                                <div
+                                    style={{ display: usernameCheckState === "hidden" ? "none" : "block" }}
+                                    className={styles.checkUsernameTitle}
+                                >
+                                    <h6 style={{ display: usernameCheckState === "available" ? "block" : "none" }}>
+                                        Имя пользователя свободно
+                                    </h6>
+                                    <h6 style={{
+                                        display: usernameCheckState === "not_available" ? "block" : "none",
+                                        color: "var(--accent-error)"
+                                    }}>
+                                        Имя занято!
+                                    </h6>
+                                    <h6 style={{ display: usernameCheckState === "pending" ? "block" : "none" }}>
+                                        Проверка доступности...
+                                    </h6>
+                                </div>
+                                <input
+                                    key="1"
+                                    name="username"
+                                    minLength={4}
+                                    maxLength={16}
+                                    required={true}
+                                    placeholder="Придумайте логин"
+                                    id="register-username-input"
+                                    onInput={(e) => {
+                                        if (!(e.target as HTMLInputElement).value) setUsernameCheckState("hidden")
+                                        else setUsernameCheckState("pending");
+                                        usernameDebounce();
+                                    }}
+                                    style={{
+                                        borderColor: usernameCheckState === "not_available" ? "var(--accent-error)" : "",
+                                        backgroundColor: usernameCheckState === "not_available" ? "var(--accent-error-30)" : "",
+                                        marginTop: 0
+                                    }}
+                                    className={usernameCheckState === "not_available" ? "error-selection" : ""}
+                                />
+                            </>,
+                            <input
+                                key="3"
+                                name="password"
+                                type="password"
+                                minLength={6}
+                                required={true}
+                                placeholder="Придумайте пароль"
+                            />
+                        ]}
+                    />
+                }
+                buttonTitle="Регистрация"
+                buttonDisabled={usernameCheckState === "not_available"}
+                submitCallback={registerCallback}
+                tipCallback={() => setFormType("login")}
+            />
         )
     }
 
@@ -94,37 +190,6 @@ export default function AuthForm() {
             />
         )
     } else if (formType === "register") {
-        return (
-            <BaseAuthForm
-                title="Регистрация"
-                tip="У меня уже есть аккаунт"
-                inputs={
-                    <AuthFormInputsConstructor
-                        children={[
-                            <input
-                                key="1"
-                                name="username"
-                                minLength={4}
-                                maxLength={16}
-                                required={true}
-                                placeholder="Придумайте логин"
-                            />,
-                            <input
-                                key="3"
-                                name="password"
-                                type="password"
-                                minLength={6}
-                                required={true}
-                                placeholder="Придумайте пароль"
-                            />
-                        ]}
-                    />
-                }
-                buttonTitle="Регистрация"
-                submitCallback={registerCallback}
-                tipCallback={() => setFormType("login")}
-            />
-        )
+        return <RegisterForm />
     }
-
 }
