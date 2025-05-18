@@ -65,3 +65,11 @@
     border: 2px solid var(--accent);
     opacity: 1;
 }
+
+.Toastify__toast {
+    font-weight: 600;
+}
+
+.Toastify__toast-theme--light::selection {
+  color: var(--accent-error);
+}
