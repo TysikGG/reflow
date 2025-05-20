@@ -10,7 +10,7 @@ export function showSuccessMessage(message: string) {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        transition: Slide,
+        transition: Slide
     });
 }
 

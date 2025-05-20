@@ -5,6 +5,6 @@ export default async function checkUsername(username: any) {
         method: "POST",
         data: { username }
     });
-
+    
     return data;
 }
