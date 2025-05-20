@@ -34,6 +34,7 @@ export default function RootLayout({
           pauseOnHover
           theme="dark"
           transition={Slide}
+          limit={5}
         />
         {children}
       </body>
