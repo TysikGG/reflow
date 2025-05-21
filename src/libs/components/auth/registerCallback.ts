@@ -2,9 +2,9 @@ import { APIUsersRegister } from "@/libs/API/users/Auth";
 import { hash } from "@/libs/scripts/hash";
 
 import { FormEvent } from "react";
-import { showErrorMessage } from "../tip";
+import { showErrorMessage, showSuccessMessage } from "../tip";
 
-export default function registerCallback(e: FormEvent<HTMLFormElement>) {
+export default async function registerCallback(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -18,6 +18,6 @@ export default function registerCallback(e: FormEvent<HTMLFormElement>) {
         username,
         hashed_password: hash(password)
     });
-
-    APIregister.register();
+    const res = await APIregister.register();
+    if (res.status === 200) return showSuccessMessage("Пользователь успешно зарегистрирован!");
 }
