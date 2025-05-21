@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 
 export function hash(data: string) {
-    return bcrypt.hashSync(data);
+    const salt = bcrypt.genSaltSync(10);
+    return bcrypt.hashSync(data, salt);
 }
