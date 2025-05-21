@@ -15,7 +15,7 @@ export class APIUsersRegister implements APIUsersRegisterProps {
     }
 
     async register() {
-        await request("/users/auth/register", {data: {
+        return await request("/users/auth/register", {data: {
             username: this.username,
             hashed_password: this.hashed_password
         }, method: "post"})
